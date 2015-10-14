@@ -21,6 +21,28 @@ public class LinkedList {
 		
 	 return length;
 	}
+	
+	public void deleleteFromHead(){
+		this.head = this.head.getNextNode();
+		
+		
+	}
+	public Node find( int data){
+		//get reference to the head
+		Node current = this.head;
+		//then we traverse
+		
+		while(current != null){
+			if(current.getData() == data){
+				return current;
+			}
+		}
+		
+		return null;
+		
+		
+		
+	}
 	@Override 
 	public String toString(){
 		

@@ -16,6 +16,9 @@ public class LinkedListDemo {
 		
 		System.out.println(list);
 		System.out.println("length" + list.length());
+		//find 19 
+		
+		System.out.println("Found" + list.find(19));
 	}
 
 }
