@@ -4,14 +4,24 @@ public class TreeNode {
 	private Integer data;
 	private TreeNode leftChild;
 	private TreeNode rightChild;
+	private Boolean isDeleted = false;
 	
 	public TreeNode(Integer data)
 	{
 		this.data = data;
 	}
-	
+	public Integer smallest(){
+		if(this.leftChild == null)
+			return this.data;
+		return this.leftChild.smallest();
+	}
+	public Integer largest(){
+		if(this.rightChild == null)
+			return this.data;
+		return this.leftChild.largest();
+	}
 	public TreeNode find(Integer data){
-		if (this.data == data)
+		if (this.data == data && !isDeleted)
 			return this;
 		if (data < this.data && leftChild != null)
 			return leftChild.find(data);
@@ -55,9 +65,19 @@ public class TreeNode {
 	public TreeNode getRightChild() {
 		return rightChild;
 	}
-	public void setFightChild(TreeNode fightChild) {
+	public void setRightChild(TreeNode fightChild) {
 		this.rightChild = fightChild;
 	}
 	
-
+	@SuppressWarnings("unused")
+	private void delete(){
+		this.isDeleted = true;
+		
+	}
+	
+	public boolean isDeleted(){
+		return isDeleted;
+	}
+	
+	
 }

@@ -19,7 +19,50 @@ public class BinarySearchTree {
 		return null;
 	}
 	public void delete (Integer data){
+		TreeNode current = this.root;
+		TreeNode parent = this.root;
+		boolean isLeftchild = false;
+		if (current == null){
+			return;
+		}
+		while (current != null && current.getData() != data){
+			parent = current;
+			
+			if (data < current.getData()){
+				current = current.getLeftChild();
+				isLeftchild = true;
+				
+			}else{
+				current = current.getRightChild();
+				isLeftchild = false;
+				
+			}
+			
+			if (current == null){
+				return;
+			}
 		
+			if(current.getLeftChild() == null && current.getRightChild() == null){
+				if(current == root){
+				root = null;
+			}else{
+				if (isLeftchild){
+					parent.setLeftChild(null);
+				}else{
+					parent.setRightChild(null);
+				}
+				
+			}
+		}else if (current.getRightChild() == null){
+			
+			if (current == root){
+				root = current.getLeftChild();
+			}else if(isLeftchild) {
+				parent.setLeftChild(current.getLeftChild());
+			}
+		}
+		
+		}
 	}
 
 }
